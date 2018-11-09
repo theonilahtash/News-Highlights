@@ -53,11 +53,11 @@ def source_review(id):
     source = get_source(id)
 
     if form.validate_on_submit():
-        title = form.title.data
+        name = form.name.data
         review = form.review.data
-        new_review = Review(news.id,title,news.poster,review)
+        new_review = Review(news.id,name,source.url,review)
         new_review.save_review()
-        return redirect(url_for('main.news',id = news.id ))
+        return redirect(url_for('main.source',id = source.id ))
 
-    title = f'{news.title} review'
-    return render_template('new_review.html',title = title, review_form=form, news=news)
+    name = f'{source.name} review'
+    return render_template('new_review.html',name = name, review_form=form, source=source)
