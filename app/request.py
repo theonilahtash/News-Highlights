@@ -8,36 +8,36 @@ base_url = None
 
 def configure_request(app):
     global api_key,base_url
-    api_key = app.config['MOVIE_API_KEY']
-    base_url = app.config['MOVIE_API_BASE_URL']
+    api_key = app.config['SOURCE_API_KEY']
+    base_url = app.config['SOURCE_API_BASE_URL']
 
-def get_movies(category):
+def get_source(category):
     '''
     Function that gets the json response to our url request
     '''
-    get_movies_url = base_url.format(category,api_key)
+    get_source_url = base_url.format(category,api_key)
 
-    with urllib.request.urlopen(get_movies_url) as url:
-        get_movies_data = url.read()
-        get_movies_response = json.loads(get_movies_data)
+    with urllib.request.urlopen(get_source_url) as url:
+        get_source_data = url.read()
+        get_source_response = json.loads(get_source_data)
 
         movie_results = None
 
-        if get_movies_response['results']:
-            movie_results_list = get_movies_response['results']
-            movie_results = process_results(movie_results_list)
+        if get_source_response['results']:
+            source_results_list = get_sources_response['results']
+            source_results = process_results(source_results_list)
 
-    return movie_results
+    return source_results
 
-def process_results(movie_list):
+def process_results(source_list):
     '''
-    Function  that processes the movie result and transform them to a list of Objects
+    Function  that processes the source result and transform them to a list of Objects
 
     Args:
-        movie_list: A list of dictionaries that contain movie details
+        source_list: A list of dictionaries that contain movie details
 
     Returns :
-        movie_results: A list of movie objects
+        source_results: A list of movie objects
     '''
     movie_results = []
     for movie_item in movie_list:
