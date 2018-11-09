@@ -1,10 +1,25 @@
- {% import 'macros.html' as macro%} {% extends 'base.html'%}
-<!-- Content block -->
-{% block content %}
-<div class="container">
+{% extends 'base.html' %} {% block content%} {% for article_row in article %}
 
-    <!-- Poster background -->
-    <div class="row">
-        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 posterPath no-repeat center center">
-            <img src="{{source.poster}}" alt="">
+
+
+<div class="row">
+    <div class="col-md-4">
+        <a href="{{article_row.url}}">
+            <img src="{{article_row.image}}" alt="{{article_row.title}}" class="img-responsive" styles="height:30px">
+        </a>
+        <div class="caption">
+            <h4>
+                <a href="{{article_row.url}}" target="_blank">{{article_row.title |truncate(35)}}</a>
+            </h4>
+            <p>{{article.description | truncate(100)}}</p>
+            <a href="{{article_row.url}}" target="_blank"> Read More</a>
         </div>
+        <div class="footer">
+            Published at: {{article_row.date}}
+        </div>
+
+    </div>
+
+
+
+    {% endfor %} {%endblock%}

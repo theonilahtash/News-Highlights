@@ -27,30 +27,32 @@
             <input type="submit" value="Submit" class="btn btn-default">
         </form>
     </div>
+<div class="row">
+    <div class="col-md-12">
 
+        <centre>
+            <h1>Tech News</h1>
+        </centre>
+        <ul>
+            {{macro.displaySourcesList(technology)}}
 
-    <!-- Breaking news section  -->
-    <h3> Breaking News</h3>
-    <ul>
-        {% for Breaking_news in Breaking %}
-        <li>{{ macro.displayNewsList(Breaking)}}</li>
-        {% endfor %}
-    </ul>
-    <!-- Business news  -->
-    <h3> Business News</h3>
-    <ul>
-        {% for Business_news in Business %}
-        <li>{{ macro.displayNewsList(Business)}}</li>
-        {% endfor %}
-    </ul>
-    <!-- General news -->
-    <h3>General news</h3>
-    <ul>
-        {% for General_news in General %}
-        <li>{{ macro.displayNewsList(General)}}</li>
-        {% endfor %}
-    </ul>
-    {% endblock %}
-</body>
-
-</html>
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <h1>Sports News</h1>
+        <ul>
+            {{macro.displaySourcesList(sports)}}
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <h1>Entertainment News</h1>
+        <ul>
+            {{macro.displaySourcesList(entertainment)}}
+        </ul>
+    </div>
+</div>
+{% endblock %}
