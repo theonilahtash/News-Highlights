@@ -36,26 +36,18 @@
         <li>{{ macro.displayNewsList(Breaking)}}</li>
         {% endfor %}
     </ul>
-    <!-- Popular movie -->
-    <h3> Popular Movies</h3>
+    <!-- Business news  -->
+    <h3> Business News</h3>
     <ul>
-        {% for popular_movie in popular %}
-        <li>{{ macro.displayMovieList(upcoming)}}</li>
+        {% for Business_news in Business %}
+        <li>{{ macro.displayNewsList(Business)}}</li>
         {% endfor %}
     </ul>
-
-    <!-- Upcoming movie  -->
-    <h3> Upcoming Movies </h3>
+    <!-- General news -->
+    <h3>General news</h3>
     <ul>
-        {% for upcoming_movie in upcoming %}
-        <li>{{ upcoming_movie.title}}</li>
-        {% endfor %}
-    </ul>
-    <!-- Now showing movie -->
-    <h3>Now Showing</h3>
-    <ul>
-        {% for now_showing_movie in now_showing %}
-        <li>{{ macro.displayMovieList(now_showing)}}</li>
+        {% for General_news in General %}
+        <li>{{ macro.displayNewsList(General)}}</li>
         {% endfor %}
     </ul>
     {% endblock %}
