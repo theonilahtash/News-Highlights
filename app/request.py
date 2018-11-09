@@ -21,7 +21,7 @@ def get_source(category):
         get_source_data = url.read()
         get_source_response = json.loads(get_source_data)
 
-        movie_results = None
+        source_results = None
 
         if get_source_response['results']:
             source_results_list = get_sources_response['results']
@@ -34,51 +34,46 @@ def process_results(source_list):
     Function  that processes the source result and transform them to a list of Objects
 
     Args:
-        source_list: A list of dictionaries that contain movie details
+        source_list: A list of dictionaries that contain source details
 
     Returns :
-        source_results: A list of movie objects
+        source_results: A list of source objects
     '''
-    movie_results = []
-    for movie_item in movie_list:
-        id = movie_item.get('id')
-        title = movie_item.get('original_title')
-        overview = movie_item.get('overview')
-        poster = movie_item.get('poster_path')
-        vote_average = movie_item.get('vote_average')
-        vote_count = movie_item.get('vote_count')
+    source_results = []
+    for source_item in source_list:
+        id = source_item.get('id')
+        name = source_item.get('original_name')
+        description = source_item.get('description')
+        category = source_item.get('category')
+        language = source_item.get('language')
+        country = source_item.get('country')
 
         if poster:
-            movie_object = Movie(id,title,overview,poster,vote_average,vote_count)
-            movie_results.append(movie_object)
-            print(movie_results)
+            source_object = Source(id,name,description,url,category,language,country)
+            source_results.append(source_object)
+            print(source_results)
 
-    return movie_results
+    return source_results
 
-def get_movie(id):
-    get_movie_details_url = base_url.format(id,api_key)
+def get_source(id):
+    get_source_details_url = base_url.format(id,api_key)
 
-    with urllib.request.urlopen(get_movie_details_url) as url:
-        movie_details_data = url.read()
-        movie_details_response = json.loads(movie_details_data)
-        movie_object = None
-        if movie_details_response:
-            id = movie_details_response.get('id')
-            print(f'This is id: {id}')
-            title = movie_details_response.get('original_title')
-            print(f'This is title: {title}')
-            overview = movie_details_response.get('overview')
-            print(f'This is overview: {overview}')
-            poster = movie_details_response.get('poster_path')
-            print(f'This is poster: {poster}')
-            vote_average = movie_details_response.get('vote_average')
-            print(f'This is vote_average: {vote_average}')
-            vote_count = movie_details_response.get('vote_count')
-            print(f'This is vote_count: {vote_count}')
+    with urllib.request.urlopen(get_source_details_url) as url:
+        source_details_data = url.read()
+        source_details_response = json.loads(source_details_data)
+        source_object = None
+        if source_details_response:
+            id = source_details_response.get('id')
+            name = source_details_response.get('name')
+            description = source_details_response.get('description')
+            category = source_details_response.get('category')
+            language = source_details_response.get('language')
+            country = source_details_response.get('country')
+        
 
-            movie_object = Movie(id,title,overview,poster,vote_average,vote_count)
+            source_object = Source(id,name,description,url,category,language,country)
 
-    return movie_object
+    return source_object
 
 def search_movie(movie_name):
     search_movie_url = 'https://api.themoviedb.org/3/search/movie?api_key={}&query={}'.format(api_key,movie_name)
