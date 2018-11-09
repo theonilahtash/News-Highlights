@@ -28,7 +28,7 @@ def index():
 def source(id):
 
     '''
-    View news page function that returns the news details page and its data
+    View news page function that returns the source details page and its data
     '''
 
     Source = get_source(id)
