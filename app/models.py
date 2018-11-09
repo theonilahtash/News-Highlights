@@ -3,14 +3,14 @@ class Source:
     Source class to define News Objects
     '''
 
-    def __init__(self,id,name,description,url,category,language,country):
-        id: time,
-        name: Time,
-        description: Breaking news and analysis from TIME.com. Politics, world news, photos, video, tech reviews, health, science and entertainment news,
-        url: http://time.com,
-        category: general,
-        language: en,
-        country: us
+    def __init__(self,id,name,description,poster,category,language,country):
+        self.id: time,
+        self.name: Time,
+        self.description: Breaking news and analysis from TIME.com. Politics, world news, photos, video, tech reviews, health, science and entertainment news,
+        self.poster: http://time.com,
+        self.category: general,
+        self.language: en,
+        self.country: us
 
 
 class Articles:
