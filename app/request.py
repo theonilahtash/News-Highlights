@@ -75,17 +75,17 @@ def get_source(id):
 
     return source_object
 
-def search_source(source_name):
-    search_source_url = 'https://newsapi.org/v2/sources?api_key={}&query={}'.format(api_key,source_name)
-    with urllib.request.urlopen(search_source_url) as url:
-        search_source_data = url.read()
-        search_source_response = json.loads(search_source_data)
+# def search_source(source_name):
 
-        search_source_results = None
+#     with urllib.request.urlopen(search_source_url) as url:
+#         search_source_data = url.read()
+#         search_source_response = json.loads(search_source_data)
 
-        if search_source_response['results']:
-            search_source_list = search_source_response['results']
-            search_source_results = process_results(search_source_list)
+#         search_source_results = None
+
+#         if search_source_response['results']:
+#             search_source_list = search_source_response['results']
+#             search_source_results = process_results(search_source_list)
 
 
-    return search_source_results
+#     return search_source_results
