@@ -3,19 +3,19 @@ from .models import Source
 
 # Getting api key
 api_key = None
-# Getting the movie base url
-base_url = None
+
 
 def configure_request(app):
-    global api_key,base_url
+    global api_key,
     api_key = app.config['SOURCE_API_KEY']
-    base_url = app.config['SOURCE_API_BASE_URL']
+    
+
 
 def get_source(category):
     '''
     Function that gets the json response to our url request
     '''
-    get_source_url = base_url.format(category,api_key)
+
 
     with urllib.request.urlopen(get_source_url) as url:
         get_source_data = url.read()
