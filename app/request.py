@@ -17,6 +17,7 @@ base2_url ='https://newsapi.org/v2/top-headlines?sources={}&apiKey={}'
 def configure_request(app):
     global api_key
     api_key = app.config['SOURCE_API_KEY']
+    print(api_key)
 
 def get_source(category):
     get_source_url = base_url.format(category, api_key)
@@ -53,12 +54,13 @@ def process_source(source_list):
 
     return source_results
 
-def get_articles(id):
-    get_articles_url = base2_url.format(id,api_key)
+def get_articles(category_news):
+    get_articles_url = 'https://newsapi.org/v2/top-headlines?sources={}&apiKey={}'.format(
+        category_news, api_key)
     print(get_articles_url)
     with urllib.request.urlopen(get_articles_url) as url:
         get_articles_data = url.read()
-        # print(get_articles_data)
+        print(get_articles_data)
 
         get_articles_response =json.loads(get_articles_data)
         
@@ -72,21 +74,20 @@ def get_articles(id):
     return articles_results
 
 
-# def process_articles(articles_list):
-#     # 
-#     articles_results=[]
-#     for article in articles_list:
-#         author = article.get('author')
-#         title = article.get('title')
-#         description = article.get('description')
-#         url = article.get('url')
-#         image = article.get('urlToImage')
-#         time = article.get('publishedAt')
-#         if title:
-#             articles_object = Articles(author,title,description,url,image,time)
-#             articles_results.append(articles_object)
+def process_articles(articles_list):
+    articles_results=[]
+    for article in articles_list:
+        author = article.get('author')
+        title = article.get('title')
+        description = article.get('description')
+        url = article.get('url')
+        image = article.get('urlToImage')
+        time = article.get('publishedAt')
+        if title:
+            articles_object = Articles(author,title,description,url,image,time)
+            articles_results.append(articles_object)
 
-#     return articles_results  
+    return articles_results  
 
 def search_source(source_name):
     search_source_url =  'https://newsapi.org/v2/top-headlines?sources={}&apiKey={}'

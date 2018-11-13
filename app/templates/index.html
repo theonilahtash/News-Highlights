@@ -9,25 +9,24 @@
 
 <body style="background-image: url('http://www.diamondfacts.org/wp-content/uploads/2017/03/grey-map.png')">
     <h5></h5>
-    <div class="container" style="background-color: black; opacity:0.9">
+    <div class="container" style="background-color:lightsalmon; opacity:0.9">
         <div class="row" style="opacity: 0.9;">
-            <div class="card" style="background-color:#dbb6ef;">
+            <div class="card" style="background-color:green;">
                 <div class="col-md-4" background-color:#dbb6ef; id="card1">
-                    <h3 style="color:white">Sports News</h3>
+                    <h3 class="btn btn-default">Sports News</h3>
                     <ul>
                         {{ macro.displaySourceList(category_news)}}
                     </ul>
                 </div>
             </div>
             <div class="col-md-4">
-                <h3 style="color: white">Technology News</h3>
-                <ul style="color: white">
+                <h3 class="btn btn-success" font-size:2em;>Technology News</h3>
                     {{ macro.displaySourceList(technology)}}
                 </ul>
 
             </div>
             <div class="col-md-4">
-                <h3 style="color:white">Businesses News</h3>
+                <h3 class="btn btn-default">Businesses News</h3>
                 <ul>
                     {{macro.displaySourceList(business)}}
                 </ul>

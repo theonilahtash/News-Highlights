@@ -17,10 +17,10 @@ def index():
     title = 'great news sources here'
     return render_template('index.html',title = title, category_news = category_news, technology = technology, business = business)
 
-@main.route('/articles/<articles:id>')
-def articles(articles_id):
-    articles = get_articles(articles_id)
-    # print(articles)
-    title = 'f{articles_id}'
+@main.route('/articles/articles:category')
+def articles(articles_category):
+    articles = get_articles(articles_category)
+    print(articles)
+    title = 'f{articles_category}'
 
-    return render_template('articles.html',id=articles_id,title=title,articles=articles)   
+    return render_template('articles.html',id=articles_category,title=title,articles=articles) 
