@@ -1,29 +1,26 @@
+
 from flask import render_template,request,redirect,url_for
-
-from ..request import get_sources,get_article
-
 from . import main
+from ..request import get_articles, get_source
+from ..models import Source,Articles
 
-
+@main.route('/news/<int:news_id>')
+def source(source_id):
+    return render_template('source.html',id = source_id)  
 @main.route('/')
 def index():
-    """
-    Function that returns the index page and all its data
-    """
-    entertainment_news = get_sources('entertainment')
-    sport_news = get_sources('sports')
-    tech_news = get_sources('technology')
-    title = title
-    
-    return render_template('index.html', title=title, sports=sport_news, technology=tech_news, entertainment=entertainment_news)
+    #getting categories
+    category_news = get_source('general')
+    technology = get_source('technology')
+    business = get_source('business')
+    print(category_news)
+    title = 'great news sources here'
+    return render_template('index.html',title = title, category_news = category_news, technology = technology, business = business)
 
+@main.route('/articles/<articles:id>')
+def articles(articles_id):
+    articles = get_articles(articles_id)
+    # print(articles)
+    title = 'f{articles_id}'
 
-@main.route('/source/<id>')
-def articles(id):
-    """
-    View articles
-    """
-    article = get_article(id)
-    print(article)
-    title = f'News{id}'
-    return render_template('news.html', title=title, article=article)
+    return render_template('articles.html',id=articles_id,title=title,articles=articles)   
