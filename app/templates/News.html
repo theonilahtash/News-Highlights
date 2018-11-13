@@ -1,4 +1,6 @@
-{% extends 'base.html' %} {% block content%} {% for article_row in article %}
+{% extends 'base.html' %} 
+{% block content%} 
+{% for article_row in articles %}
 
 
 
@@ -9,9 +11,9 @@
         </a>
         <div class="caption">
             <h4>
-                <a href="{{article_row.url}}" target="_blank">{{article_row.title |truncate(35)}}</a>
+                <a href="{{article_row.url}}" target="_blank">{{articles_row.title |truncate(35)}}</a>
             </h4>
-            <p>{{article.description | truncate(100)}}</p>
+            <p>{{articles.description | truncate(100)}}</p>
             <a href="{{article_row.url}}" target="_blank"> Read More</a>
         </div>
         <div class="footer">
